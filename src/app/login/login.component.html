@@ -1,1 +1,24 @@
-<h1>Login Page</h1>
+<html>
+
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+    <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+        <div> 
+            <label for="usename">Email</label>
+            <input type="email" formControlName = "email">
+        </div>
+        <div>
+                <label for="password">Password</label>
+                <input type="password" formControlName ="password">
+        </div>
+        <div>
+            <button pButton type="submit" (click) = "onSubmit()" label="Login" class="ui-button-raised"></button>
+        </div>
+    </form>
+    <button pButton type="button" label="Register" class="ui-button-raised ui-button-secondary"></button>
+</div>
+
+</body>
+</html>

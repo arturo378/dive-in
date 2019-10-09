@@ -1,0 +1,11 @@
+body {
+    background-image: image('');
+}
+div {
+    padding: 1%;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+}
+
