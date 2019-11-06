@@ -1,0 +1,22 @@
+
+<div class="container">
+    <div *ngFor="let item of items" >
+        <p-card *ngIf="item.payload.doc.data().Is_Active">
+            <h6>{{item.payload.doc.data().sample_id}}</h6>
+            <label><b>Entrees:</b></label>
+            <p> {{item.payload.doc.data().Entree}}</p>
+            <br>
+            <label><b>Sides:</b></label>
+            <p> {{item.payload.doc.data().Side}}</p>
+            <br>
+            <label><b>Dricks:</b></label>
+            <p> {{item.payload.doc.data().Drink}}</p>
+            <br>
+            <label><b>Comments:</b></label>
+            <p> {{item.payload.doc.data().comments}}</p>
+            <p-footer>
+                    <button pButton type="button" label="Order Complete" icon="pi pi-check" style="margin-right: .25em" (click)="markComplete(item)"></button>
+            </p-footer>
+        </p-card>
+    </div>
+</div>
