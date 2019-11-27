@@ -38,25 +38,60 @@ import { Router, RouterLink } from "@angular/router";
           var errorCode = error.code;
           var errorMessage = error.message;
           console.log(errorMessage);
-          this.router.navigate(['/home']);
         });
-      }
-
-      afterSignIn(){
         this.router.navigate(['/home']);
       }
 
-
-  
-
-
-      SignUp(email, password) {
-        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      SignUp(email, password, fname, lname) {
+      this.afAuth.auth.createUserWithEmailAndPassword(email, password)
           .then((result) => {
-            //this.SetUserData(result.user);
+            this.SetUserData(email, fname, lname, result.user.uid);
           }).catch((error) => {
             window.alert(error.message)
-          })
+          });
+      
+      }
+
+      addEmployeeUser(email, password, fname, lname, access) {
+        this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+            .then((result) => {
+              this.SetEmployeeData(email, fname, lname, result.user.uid, access);
+            }).catch((error) => {
+              window.alert(error.message)
+            });
+        
+        }
+
+        SetEmployeeData(email, fname, lname, guid, access){  
+          return this.afs.collection('users').add(
+            {
+              email: email,
+              first_name: fname,
+              last_name: lname,
+              access: access,
+              birthdate: '',
+              GUID: guid,
+              picture:''
+  
+            }
+          );
+  
+        }
+
+      SetUserData(email, fname, lname, guid){  
+        return this.afs.collection('users').add(
+          {
+            email: email,
+            first_name: fname,
+            last_name: lname,
+            access: 1,
+            birthdate: '',
+            GUID: guid,
+            picture:''
+
+          }
+        );
+
       }
 
       SignOut() {

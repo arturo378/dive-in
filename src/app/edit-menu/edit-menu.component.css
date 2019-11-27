@@ -1,6 +1,5 @@
 #toggle{
     width: 100%;
-}
-table td{
-    word-wrap: break-word;
+    padding: 1%;
+    text-align: left;
 }

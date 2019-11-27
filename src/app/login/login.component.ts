@@ -30,6 +30,5 @@ export class LoginComponent {
         ////console.warn(this.loginForm.value)
         //console.warn(this.loginForm.controls['email'].value);
         this.authService.SignIn(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value);
-        this.authService.afterSignIn();
     }
 }
