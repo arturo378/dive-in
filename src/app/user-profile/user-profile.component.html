@@ -1,0 +1,22 @@
+<form [formGroup]="updateUserForm" (submit)="onSubmit()" *ngFor="let user of userInfo">
+        <div class="photoImg contiainer">
+                <img [src]="imgSrc" width="350px" height="250px">
+        </div>
+        <div>
+            <label>Select file to upload</label>
+            <input type="file" class="form-control"  formControlName="imageUrl" (change)="showImage($event)">
+        </div>
+        <div> 
+            <label>First Name:</label>
+            <input type="text" class="form-control" formControlName = "fname" value="{{user.fname}}">
+        </div>
+        <div> 
+            <label>Last Name:</label>
+            <input type="text" class="form-control" formControlName = "lname" value="{{user.lname}}">
+        </div>
+        <div> 
+            <label>Birthday:</label>
+            <input type="text" class="form-control" formControlName = "bday" value="{{user.birthdate}}">
+        </div>
+        <button pButton type="submit"  label="Update" class="ui-button-raised"></button>
+</form>

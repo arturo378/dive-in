@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 html{
 
 width: 100% ;
@@ -65,3 +67,4 @@ body .ui-button:hover {
     background-color: #1e1b46 !important;
     color: white !important;
   }
+

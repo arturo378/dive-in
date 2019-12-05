@@ -1,0 +1,41 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+
+
+<div mat-dialog-content *ngIf="action != 'Delete'; else elseTemplate">
+
+  <form [formGroup]="formGroup">
+  <div>
+      <img [src]="imgSrc" width="350px" height="250px">
+  </div>
+  <br>
+  <div>
+      <label>Select for new image</label>
+      <input type="file" class="form-control"  formControlName="imageUrl" (change)="showImage($event)">
+  </div> 
+</form>
+  <br> 
+  <mat-form-field class="full">
+    <input placeholder="Name" matInput [(ngModel)]="item.name">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+    <input placeholder="Category" matInput [(ngModel)]="item.category">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+    <textarea placeholder="Description" matInput [(ngModel)]="item.description"></textarea>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+    <input placeholder="Price" matInput [(ngModel)]="item.price">
+  </mat-form-field>
+
+  <ng-template #elseTemplate>
+   <p> Are you sure you want to delete menu item <b>{{item.name}}</b>? </p>
+  </ng-template>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

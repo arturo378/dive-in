@@ -1,16 +1,35 @@
 <div class="container">
+  
 <div class="text">        
 <br><h1><b>Register Page</b></h1><br>
 </div>
+  
 <form [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
         <div class="text"> 
                 <label for="usename">Email</label><br>
                 <input type="email" class="form-control" formControlName="email"><br>
         </div>
+
+        <div> 
+                <label for="fname">First Name</label>
+                <input type="text" class="form-control" formControlName="fname">
+        </div>
+  
+        <div> 
+                <label for="lname">Last Name</label>
+                <input type="text" class="form-control" formControlName="lname">
+        </div>
+  
+        <div> 
+                <label for="usename">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+        </div>
+  
         <div class="text">
                 <label for="password">Password</label><br>
                 <input type="password" class="form-control" formControlName="password">
         </div>
+  
         <div class="text"> 
                 <br><button pButton type="button" label="Register"  (click) = "onSubmit()" class="ui-button-raised"></button>
                 <br><br><button pButton type="button" label="Cancel" class="ui-button-raised ui-button-secondary"></button>

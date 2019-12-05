@@ -1,0 +1,38 @@
+
+<div class="container" *ngFor="let item of items" >
+    <p-card>
+        <p-panel header="Details">
+            <b>Ticket Number: </b>{{item.id}}
+            <br>
+            <b>Comments: </b>{{item.comments}}
+            <br>
+            <b>Space: </b>{{item.space}}
+            <br>
+            <b>Date: </b>{{item.date}}
+            <br>
+        </p-panel>
+        <br>
+        <table class="table table-sm">
+            <tr class="thead-dark">
+                <th colspan="1">Orser</th>
+                <th></th>
+            </tr>
+            <tr class="thead-light">
+                <th>Qty</th>
+                <th>Entree</th>
+            </tr>
+            <tr *ngFor="let x of item.entree | keyvalue">
+                <th>{{x.value.quantity}}</th>
+                <th>{{x.value.name}}</th>
+            </tr>
+            <tr *ngFor="let x of item.side | keyvalue">
+                    <th>{{x.value.quantity}}</th>
+                    <th>{{x.value.name}}</th>
+            </tr>
+            <tr *ngFor="let x of item.drink | keyvalue">
+                    <th>{{x.value.quantity}}</th>
+                    <th>{{x.value.name}}</th>
+            </tr>
+        </table>
+    </p-card>
+</div> 

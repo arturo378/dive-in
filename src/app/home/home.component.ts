@@ -2,30 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 import {AuthService} from '../shared/services/auth.service';
 import { Router, RouterLink } from "@angular/router";
+import { CRUDService } from '../shared/services/crud.service';
 
 @Component({ 
     selector: 'app-home',
-    templateUrl: 'home.component.html' })
+    templateUrl: 'home.component.html'})
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+    user = null;
+    userInfo: any;
 
     constructor(
         public firebase: AngularFireAuth,
         public authentication: AuthService,
-        public router: Router
+        public router: Router,
+        public userservice: CRUDService,
         ){
         
     }
 
     ngOnInit(){
-      var user = this.firebase.auth.currentUser;
+    this.user = this.firebase.auth.currentUser;
 
-      if (user) {
-         // User is signed in.
+      if (this.user) {
+        console.log(this.user);
+          
       } else {
          // No user is signed in.
          this.router.navigate(['/']);
        }
+
+       console.log(this.userInfo);
     }
 
     logout(){

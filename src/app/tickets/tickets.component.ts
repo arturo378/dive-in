@@ -19,6 +19,8 @@ export class TicketsComponent implements OnInit {
   @Input() ticket: Ticket;
 
   items: Array<any>;
+  data: any;
+
 
 
   constructor(
@@ -35,10 +37,26 @@ export class TicketsComponent implements OnInit {
     var user = this.firebase.auth.currentUser;
 
       if (user) {
+
         this.ticketservice.getTickets().subscribe(result =>{
-          this.items = result;
+          this.items = result.map(x =>{
+            return {
+              id: x.payload.doc.data()['ID'],
+              key: x.payload.doc.id,
+              comments: x.payload.doc.data()['Comments'],
+              date: new Date(x.payload.doc.data()['Date'].seconds*1000),
+              entree: JSON.parse(x.payload.doc.data()['Entree']),
+              drink: JSON.parse(x.payload.doc.data()['Drink']),
+              active: x.payload.doc.data()['Is_active'],
+              side: JSON.parse(x.payload.doc.data()['Side']),
+              space: x.payload.doc.data()['space_id'],
+              status: x.payload.doc.data()['Status']
+            };
+          
+          })
+          this.items = this.items.sort((a, b) => a.date - b.date);
+          console.log(this.items);
         });
-        //console.log(this.items.toString);
       } else {
          // No user is signed in.
          this.router.navigate(['/login']);
@@ -48,8 +66,10 @@ export class TicketsComponent implements OnInit {
   }
 
   markComplete(dataItem){
-    dataItem.Is_Active = false
-    this.ticketservice.updateTicket(dataItem);
+    dataItem.Is_active = false
+    this.ticketservice.updateTicket(dataItem.key, dataItem);
   }
+
+
 
 }

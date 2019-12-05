@@ -1,0 +1,37 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+
+<div mat-dialog-content *ngIf="action != 'Delete'; else elseTemplate">
+
+  <mat-form-field class="full">
+    <input placeholder="Email" matInput [(ngModel)]="user.email">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full"  *ngIf="action == 'Add';">
+    <input placeholder="Password" type="password" matInput [(ngModel)]="user.password">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+    <input placeholder="First Name" matInput [(ngModel)]="user.fname">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+    <input placeholder="Last Name" matInput [(ngModel)]="user.lname">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+    <textarea placeholder="Birthdate" matInput [(ngModel)]="user.birthdate"></textarea>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full">
+    <input placeholder="Access" matInput [(ngModel)]="user.access">
+  </mat-form-field>
+
+  <ng-template #elseTemplate>
+   <p> Are you sure you want to delete menu item <b>{{item.name}}</b>? </p>
+  </ng-template>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

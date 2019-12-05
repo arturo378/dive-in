@@ -12,11 +12,18 @@ export class RegisterComponent {
 
     registerForm = new FormGroup({
         email: new FormControl(null),
-        password: new FormControl(null)
+        password: new FormControl(null),
+        fname: new FormControl(null),
+        lname: new FormControl(null)
    });
+   email: string;
+   password: string;
+   firstName: string;
+   lastName: string;
 
     constructor(
         private Router: ActivatedRoute,
+        public router: Router,
         private formBuilder: FormBuilder,
         public authService: AuthService
     ){
@@ -24,6 +31,12 @@ export class RegisterComponent {
     }
 
     onSubmit() {
-        this.authService.SignUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value);
+        this.email = this.registerForm.controls['email'].value;
+        this.password = this.registerForm.controls['password'].value;
+        this.firstName = this.registerForm.controls['fname'].value;
+        this.lastName = this.registerForm.controls['lname'].value;
+
+        this.authService.SignUp(this.email, this.password, this.firstName, this.lastName);
+        this.router.navigate(['/login']);
     }
 }

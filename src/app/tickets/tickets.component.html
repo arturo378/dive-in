@@ -1,22 +1,66 @@
 
-<div class="container">
-    <div *ngFor="let item of items" >
-        <p-card *ngIf="item.payload.doc.data().Is_Active">
-            <h6>{{item.payload.doc.data().sample_id}}</h6>
-            <label><b>Entrees:</b></label>
-            <p> {{item.payload.doc.data().Entree}}</p>
+<div class="container" *ngFor="let item of items" >
+        <p-card  *ngIf="item.active">
+            <p-panel header="Details">
+                <b>Ticket Number: </b>{{item.id}}
+                <br>
+                <b>Comments: </b>{{item.comments}}
+                <br>
+                <b>Space: </b>{{item.space}}
+                <br>
+                <b>Date: </b>{{item.date}}
+                <br>
+            </p-panel>
             <br>
-            <label><b>Sides:</b></label>
-            <p> {{item.payload.doc.data().Side}}</p>
-            <br>
-            <label><b>Dricks:</b></label>
-            <p> {{item.payload.doc.data().Drink}}</p>
-            <br>
-            <label><b>Comments:</b></label>
-            <p> {{item.payload.doc.data().comments}}</p>
+            <table class="table table-sm">
+                <tr class="thead-dark">
+                    <th colspan="1">Entrees</th>
+                    <th></th>
+                </tr>
+                <tr class="thead-light">
+                    <th>Qty</th>
+                    <th>Entree</th>
+                </tr>
+                <tr *ngFor="let x of item.entree | keyvalue">
+                    <th>{{x.value.quantity}}</th>
+                    <th>{{x.value.name}}</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr class="thead-dark">
+                        <th colspan="1">Sides</th>
+                        <th></th>
+                    </tr>
+                    <tr class="thead-light">
+                        <th>Qty</th>
+                        <th>Sides</th>
+                    </tr>
+                    <tr *ngFor="let x of item.side | keyvalue">
+                        <th>{{x.value.quantity}}</th>
+                        <th>{{x.value.name}}</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr class="thead-dark">
+                        <th colspan="1">Drinks</th>
+                        <th></th>
+                    </tr>
+                    <tr class="thead-light">
+                        <th>Qty</th>
+                        <th>Drinks</th>
+                    </tr>
+                    <tr *ngFor="let x of item.drink | keyvalue">
+                        <th>{{x.value.quantity}}</th>
+                        <th>{{x.value.name}}</th>
+                </tr>
+            </table>
+
             <p-footer>
                     <button pButton type="button" label="Order Complete" icon="pi pi-check" style="margin-right: .25em" (click)="markComplete(item)"></button>
             </p-footer>
         </p-card>
-    </div>
-</div>
+ </div> 
