@@ -43,6 +43,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { AuthService } from './shared/services/auth.service';
 import { CRUDService } from './shared/services/crud.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -58,7 +59,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     UserProfileComponent,
     UserEditComponent,
     DialogBoxComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

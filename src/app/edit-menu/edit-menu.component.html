@@ -1,43 +1,9 @@
 <div class="text">
 <br><h1><b>Change the Menu</b></h1><br>
 </div>
-<p-fieldset legend="Pizza" [toggleable]="true" [collapsed]="true">
-        <p-table [value]="pizzas">
-                <ng-template pTemplate="header" >
-                    <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                        <th>Modify</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-pizzas>
-                    <tr>
-                        <td>{{pizzas.payload.doc.data().name}}</td>
-                        <td>{{pizzas.payload.doc.data().category}}</td>
-                        <td>{{pizzas.payload.doc.data().price}}</td>
-                        <td>{{pizzas.payload.doc.data().description}}</td>
-                        <td>
-                            <button pButton type="button" label="Update"  (click)="showDialog()"></button>
-                            <button pButton type="button" label="Danger" class="ui-button-danger" (click)="DeletePizzaItem(pizzas)"></button>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-</p-fieldset>
-<p-fieldset legend="Burgers" [toggleable]="true">
-
-</p-fieldset>
-<p-fieldset legend="Cocktails\Beer" [toggleable]="true">
-
-</p-fieldset>
-<p-fieldset legend="Beverages" [toggleable]="true">
-
-</p-fieldset>
-=======
 
 <br>
+
 <p-panel header="Pizza" [toggleable]="true" [collapsed]="true" class="toggle">
     <!-- app.component.html -->
 <div class="container text-center">
@@ -85,7 +51,9 @@
       
       </div>
 </p-panel>
+
 <br>
+
 <p-panel header="Burgers" [toggleable]="true" [collapsed]="true" class="toggle">
   <div class="container text-center">
 
@@ -132,7 +100,9 @@
   
   </div>
 </p-panel>
+
 <br>
+
 <p-panel header="Cocktails\Beer" [toggleable]="true" [collapsed]="true" class="toggle">
   <div class="container text-center">
 
@@ -179,7 +149,9 @@
   
   </div>
 </p-panel>
+
 <br>
+
 <p-panel header="Beverages" [toggleable]="true" [collapsed]="true" class="toggle">
   <div class="container text-center">
 
@@ -226,7 +198,9 @@
   
   </div>
 </p-panel>
+
 <br>
+
 <p-panel header="Sides" [toggleable]="true" [collapsed]="true" class="toggle">
   <div class="container text-center">
 

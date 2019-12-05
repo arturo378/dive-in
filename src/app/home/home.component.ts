@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
     user = null;
     userInfo: any;
+    access=null;
 
     constructor(
         public firebase: AngularFireAuth,
@@ -23,6 +24,8 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(){
+    this.authentication.currentAccess.subscribe(access => this.access = access)
+
     this.user = this.firebase.auth.currentUser;
 
       if (this.user) {
@@ -38,5 +41,7 @@ export class HomeComponent implements OnInit {
 
     logout(){
         this.authentication.SignOut();
+        this.authentication.changeAccess(4);
+        this.router.navigate(['/']);
     }
 }

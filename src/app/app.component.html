@@ -1,10 +1,13 @@
 <!-- main content container -->
 <nav class="navbar navbar-expand navbar-dark bg-dark navbar-nav">
-  <a class="nav-item nav-link" routerLink="/home"><b>Home</b></a>
-  <a class="nav-item nav-link" routerLink="/login"><b>Login</b></a>
-  <a class="nav-item nav-link" routerLink="/register"><b>Register</b></a>
-  <a class="nav-item nav-link" routerLink="/tickets"><b>Order Dashboard</b></a>
-  <a class="nav-item nav-link" routerLink="/edit-menu"><b>Edit Menu</b></a>
+  <a *ngIf="4 > access" class="nav-item nav-link" routerLink="/home"><b>Home</b></a>
+  <a *ngIf="access == 4" class="nav-item nav-link" routerLink="/login"><b>Login</b></a>
+  <a *ngIf="access == 4" class="nav-item nav-link" routerLink="/register"><b>Register</b></a>
+  <a *ngIf="3 > access" class="nav-item nav-link" routerLink="/tickets"><b>Order Dashboard</b></a>
+  <a *ngIf="access == 1" class="nav-item nav-link" routerLink="/edit-menu"><b>Edit Menu</b></a>
+  <a *ngIf="access == 1" class="nav-item nav-link" routerLink="/users"><b>Users</b></a>
+  <a *ngIf="4 > access" class="nav-item nav-link" routerLink="/profile"><b>Profile</b></a>
+  <a *ngIf="3 > access" class="nav-item nav-link" routerLink="/ticket-history"><b>Ticket History</b></a>
  </nav>
 
   <div class="row">

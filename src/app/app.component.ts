@@ -13,7 +13,7 @@ import { CRUDService } from './shared/services/crud.service';
 
 export class AppComponent implements OnInit {
 
-  access: any = null;
+  access = null;
   user =  null;
   userInfo: any;
   imgSrc: any = null;
@@ -22,25 +22,18 @@ export class AppComponent implements OnInit {
   constructor(
     public firebase: AngularFireAuth,
     public router: Router,
-    public userservice: CRUDService
+    public userservice: CRUDService,
+    public auth: AuthService
     ){
     
 }
  
   ngOnInit(){
+
+    this.auth.currentAccess.subscribe(access => this.access = access)
     this.user = this.firebase.auth.currentUser;
 
     if (this.user) {
-      
-      this.userservice.getUser(this.user.uid).subscribe(result =>{
-        this.userInfo = result.map(x =>{
-          return {
-            access: x.payload.doc.data()['access']
-          };
-          
-        })
-      });
-
       
 
     } else {
@@ -48,6 +41,15 @@ export class AppComponent implements OnInit {
        console.log(this.access);
        this.router.navigate(['/login']);
      }
+  }
+
+  show(){
+    if (this.access == 1 ) {
+      return true;
+      
+    } else {
+      return false;
+    }
   }
 
 }

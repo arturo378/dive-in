@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { auth } from 'firebase/app';
+import { BehaviorSubject} from 'rxjs';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router, RouterLink } from "@angular/router";
@@ -11,6 +12,8 @@ import { Router, RouterLink } from "@angular/router";
   export class AuthService {
 
     userData: any;
+    public accessSource = new BehaviorSubject(4);
+    currentAccess = this.accessSource.asObservable();
 
     constructor(
         public afs: AngularFirestore,   // Inject Firestore service
@@ -30,6 +33,10 @@ import { Router, RouterLink } from "@angular/router";
         })
 
       }
+
+      changeAccess(access: number){
+        this.accessSource.next(access);
+      }
     
       // Sign in with email/password
       SignIn(email, password) {
@@ -39,7 +46,7 @@ import { Router, RouterLink } from "@angular/router";
           var errorMessage = error.message;
           console.log(errorMessage);
         });
-        this.router.navigate(['/home']);
+        //this.router.navigate(['/home']);
       }
 
       SignUp(email, password, fname, lname) {
@@ -95,8 +102,8 @@ import { Router, RouterLink } from "@angular/router";
       }
 
       SignOut() {
-        return this.afAuth.auth.signOut().then(() => {
-          this.router.navigate(['/']);
+        this.afAuth.auth.signOut().then(() => {
+         // this.router.navigate(['/']);
         })
       }
 

@@ -20,6 +20,8 @@ export class TicketsComponent implements OnInit {
 
   items: Array<any>;
   data: any;
+  access = 1;
+  curUser: Array<any>;
 
 
 
