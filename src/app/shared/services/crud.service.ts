@@ -69,19 +69,19 @@ export class CRUDService {
   updateMenuItem(data, url, type){
 
     var DBpath = null;
-    if(type='Pizza'){
+    if(type == 'Pizza'){
       DBpath = '/pizza';
     }
-    else if(type='Beverages'){
+    else if(type=='Beverages'){
       DBpath = '/beverages';
     }
-    else if(type='Burger'){
+    else if(type=='Burger'){
       DBpath = '/burgers';
     }
-    else if(type='Cocktail'){
+    else if(type=='Alcohol'){
       DBpath = '/cocktails_beer';
     }
-    else if(type='sides'){
+    else if(type=='sides'){
       DBpath = '/sides';
     }
     
@@ -117,19 +117,19 @@ export class CRUDService {
 
   addMenuItems(data, url, type){
     var DBpath = null;
-    if(type='Pizza'){
+    if(type=='Pizza'){
       DBpath = '/pizza';
     }
-    else if(type='Beverages'){
+    else if(type=='Beverages'){
       DBpath = '/beverages';
     }
-    else if(type='Burger'){
+    else if(type=='Burger'){
       DBpath = '/burgers';
     }
-    else if(type='Cocktail'){
+    else if(type=='Alcohol'){
       DBpath = '/cocktails_beer';
     }
-    else if(type='sides'){
+    else if(type=='sides'){
       DBpath = '/sides';
     }
 
@@ -145,19 +145,19 @@ export class CRUDService {
 
   deleteMenuItems(data, type){
     var DBpath = null;
-    if(type='Pizza'){
+    if(type=='Pizza'){
       DBpath = '/pizza';
     }
-    else if(type='Beverages'){
+    else if(type=='Beverages'){
       DBpath = '/beverages';
     }
-    else if(type='Burger'){
+    else if(type=='Burger'){
       DBpath = '/burgers';
     }
-    else if(type='Cocktail'){
+    else if(type=='Alcohol'){
       DBpath = '/cocktails_beer';
     }
-    else if(type='sides'){
+    else if(type=='sides'){
       DBpath = '/sides';
     }
 

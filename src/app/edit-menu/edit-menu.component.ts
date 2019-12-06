@@ -115,7 +115,7 @@ export class EditMenuComponent implements OnInit {
           name: x.payload.doc.data()['name'],
           pic: x.payload.doc.data()['pic'],
           price: x.payload.doc.data()['price'],
-          type: 'Cocktail'
+          type: 'Alcohol'
         };
       
       })

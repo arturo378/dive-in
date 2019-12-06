@@ -1,10 +1,10 @@
 <br>
-<p-panel header="Admins" [toggleable]="true" [collapsed]="true" class="spacing">
+<p-panel header="Users" [toggleable]="true" [collapsed]="true" class="spacing">
     <div class="container">
 
         <button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add item</button>
       
-        <table mat-table [dataSource]="allUsers" #mytable class="my-table mat-elevation-z8">
+        <table mat-table [dataSource]="allUsers" #mytable class="darkTable">
       
           <!-- Email Column -->
           <ng-container matColumnDef="email">
@@ -52,10 +52,10 @@
       </div>
 </p-panel>
 <br>
-<p-panel header="Employees" [toggleable]="true" [collapsed]="true" class="spacing">
+<!-- <p-panel header="Employees" [toggleable]="true" [collapsed]="true" class="spacing">
     Content
 </p-panel>
 <br>
 <p-panel header="Clients" [toggleable]="true" [collapsed]="true" class="spacing">
     Content
-</p-panel>
+</p-panel> -->
