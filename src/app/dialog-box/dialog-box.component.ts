@@ -52,7 +52,8 @@ export class DialogBoxComponent implements OnInit {
   }
 
    doAction(){
-    this.dialogRef.close({event:this.action,data:this.item});
+     console.log(this.item);
+         this.dialogRef.close({event:this.action,data:this.item});
   }
  
   closeDialog(){

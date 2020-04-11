@@ -66,8 +66,7 @@ export class EditMenuComponent implements OnInit {
           description: x.payload.doc.data()['description'],
           name: x.payload.doc.data()['name'],
           pic: x.payload.doc.data()['pic'],
-          price: x.payload.doc.data()['price'],
-          type: 'Pizza'
+          price: x.payload.doc.data()['price']
         };
       
       })
@@ -82,8 +81,7 @@ export class EditMenuComponent implements OnInit {
           description: x.payload.doc.data()['description'],
           name: x.payload.doc.data()['name'],
           pic: x.payload.doc.data()['pic'],
-          price: x.payload.doc.data()['price'],
-          type: 'Burger'
+          price: x.payload.doc.data()['price']
         };
       
       })
@@ -98,8 +96,7 @@ export class EditMenuComponent implements OnInit {
           description: x.payload.doc.data()['description'],
           name: x.payload.doc.data()['name'],
           pic: x.payload.doc.data()['pic'],
-          price: x.payload.doc.data()['price'],
-          type: 'sides'
+          price: x.payload.doc.data()['price']
         };
       
       })
@@ -114,8 +111,7 @@ export class EditMenuComponent implements OnInit {
           description: x.payload.doc.data()['description'],
           name: x.payload.doc.data()['name'],
           pic: x.payload.doc.data()['pic'],
-          price: x.payload.doc.data()['price'],
-          type: 'Alcohol'
+          price: x.payload.doc.data()['price']
         };
       
       })
@@ -130,15 +126,14 @@ export class EditMenuComponent implements OnInit {
           description: x.payload.doc.data()['description'],
           name: x.payload.doc.data()['name'],
           pic: x.payload.doc.data()['pic'],
-          price: x.payload.doc.data()['price'],
-          type: 'Beverages'
+          price: x.payload.doc.data()['price']
         };
       
       })
     });
   }
 
-  openDialog(action, item){
+  openDialog(action, item, foodType){
     item.action = action;
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '50%',
@@ -147,27 +142,28 @@ export class EditMenuComponent implements OnInit {
  
     dialogRef.afterClosed().subscribe(result => {
       if(result.event == 'Add'){
-        this.addRowData(result.data);
+        this.addRowData(result.data, foodType);
       }else if(result.event == 'Update'){
-        this.updateRowData(result.data);
+        this.updateRowData(result.data, foodType);
       }else if(result.event == 'Delete'){
-        this.deleteRowData(result.data);
+        this.deleteRowData(result.data, foodType);
       }
     });
   }
 
 
-  addRowData(item){
+  addRowData(item, type){
+    //console.log(item.type);
     if(item.selImage == null){
-      this.crud.addMenuItems(item, null, item.type);
+      this.crud.addMenuItems(item, null, type);
     }
     else{
-    var filePath = `${item.type}/${item.selImage}_${new Date().getTime()}`;
+    var filePath = `${type}/${item.selImage}_${new Date().getTime()}`;
     const fileRef = this.store.ref(filePath);
     this.store.upload(filePath, item.selImage).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
-            this.crud.addMenuItems(item, url, item.type);
+            this.crud.addMenuItems(item, url, type);
           })
         })
       ).subscribe();
@@ -177,25 +173,27 @@ export class EditMenuComponent implements OnInit {
     
   }
   
-  updateRowData(item){
+  updateRowData(item, type){
     if(item.selImage == null){
-      this.crud.updateMenuItem(item, null, item.type);
+      this.crud.updateMenuItem(item, null, type);
     }
     else{
-    var filePath = `${item.type}/${item.selImage}_${new Date().getTime()}`;
+    var filePath = `${type}/${item.selImage}_${new Date().getTime()}`;
     const fileRef = this.store.ref(filePath);
     this.store.upload(filePath, item.selImage).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
-            this.crud.updateMenuItem(item, url, item.type);
+            this.crud.updateMenuItem(item, url, type);
           })
         })
       ).subscribe();
     }
 
   }
-  deleteRowData(item){
-    this.crud.deleteMenuItems(item, item.type);
+
+
+  deleteRowData(item, type){
+    this.crud.deleteMenuItems(item, type);
   }
 
 

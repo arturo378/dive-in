@@ -24,12 +24,14 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(){
-    this.authentication.currentAccess.subscribe(access => this.access = access)
+    this.authentication.accessSource.subscribe(access => this.access = access);
+    console.log(this.access);
 
     this.user = this.firebase.auth.currentUser;
 
       if (this.user) {
         console.log(this.user);
+        console.log(this.access);
           
       } else {
          // No user is signed in.

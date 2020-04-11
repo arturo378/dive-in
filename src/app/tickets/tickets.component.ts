@@ -43,20 +43,20 @@ export class TicketsComponent implements OnInit {
         this.ticketservice.getTickets().subscribe(result =>{
           this.items = result.map(x =>{
             return {
-              id: x.payload.doc.data()['ID'],
+              ID: x.payload.doc.data()['ID'],
               key: x.payload.doc.id,
-              comments: x.payload.doc.data()['Comments'],
-              date: new Date(x.payload.doc.data()['Date'].seconds*1000),
-              entree: JSON.parse(x.payload.doc.data()['Entree']),
-              drink: JSON.parse(x.payload.doc.data()['Drink']),
-              active: x.payload.doc.data()['Is_active'],
-              side: JSON.parse(x.payload.doc.data()['Side']),
-              space: x.payload.doc.data()['space_id'],
-              status: x.payload.doc.data()['Status']
+              Comments: x.payload.doc.data()['Comments'],
+              Date: new Date(x.payload.doc.data()['Date'].seconds*1000),
+              Entree: JSON.parse(x.payload.doc.data()['Entree']),
+              Drink: JSON.parse(x.payload.doc.data()['Drink']),
+              Is_active: x.payload.doc.data()['Is_active'],
+              Side: JSON.parse(x.payload.doc.data()['Side']),
+              space_id: x.payload.doc.data()['space_id'],
+              Status: x.payload.doc.data()['Status']
             };
           
           })
-          this.items = this.items.sort((a, b) => a.date - b.date);
+          this.items = this.items.sort((a, b) => a.Date - b.Date);
           console.log(this.items);
         });
       } else {
@@ -69,6 +69,9 @@ export class TicketsComponent implements OnInit {
 
   markComplete(dataItem){
     dataItem.Is_active = false
+    dataItem.Entree = JSON.stringify(dataItem.Entree);
+    dataItem.Drink = JSON.stringify(dataItem.Drink);
+    dataItem.Side = JSON.stringify(dataItem.Side);
     this.ticketservice.updateTicket(dataItem.key, dataItem);
   }
 

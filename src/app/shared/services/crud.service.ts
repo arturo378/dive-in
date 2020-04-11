@@ -72,16 +72,16 @@ export class CRUDService {
     if(type == 'Pizza'){
       DBpath = '/pizza';
     }
-    else if(type=='Beverages'){
+    else if(type=='Beverage'){
       DBpath = '/beverages';
     }
     else if(type=='Burger'){
       DBpath = '/burgers';
     }
-    else if(type=='Alcohol'){
+    else if(type=='Cocktail'){
       DBpath = '/cocktails_beer';
     }
-    else if(type=='sides'){
+    else if(type=='Side'){
       DBpath = '/sides';
     }
     
@@ -120,16 +120,16 @@ export class CRUDService {
     if(type=='Pizza'){
       DBpath = '/pizza';
     }
-    else if(type=='Beverages'){
+    else if(type=='Beverage'){
       DBpath = '/beverages';
     }
     else if(type=='Burger'){
       DBpath = '/burgers';
     }
-    else if(type=='Alcohol'){
+    else if(type=='Cocktail'){
       DBpath = '/cocktails_beer';
     }
-    else if(type=='sides'){
+    else if(type=='Side'){
       DBpath = '/sides';
     }
 
@@ -148,16 +148,16 @@ export class CRUDService {
     if(type=='Pizza'){
       DBpath = '/pizza';
     }
-    else if(type=='Beverages'){
+    else if(type=='Beverage'){
       DBpath = '/beverages';
     }
     else if(type=='Burger'){
       DBpath = '/burgers';
     }
-    else if(type=='Alcohol'){
+    else if(type=='Cocktail'){
       DBpath = '/cocktails_beer';
     }
-    else if(type=='sides'){
+    else if(type=='Side'){
       DBpath = '/sides';
     }
 
@@ -170,6 +170,7 @@ export class CRUDService {
 
 
   updateTicket(key, data){
+
     return this.ticket.firestore.collection(this.dbPath)
     .doc(key)
     .update(data);

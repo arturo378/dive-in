@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit{
     }
 
     ngOnInit(){
-        this.authService.currentAccess.subscribe(access => this.access = access)
+        this.authService.currentAccess.subscribe(access => this.access = access);
     }
 
     onSubmit() {
@@ -39,17 +39,19 @@ export class LoginComponent implements OnInit{
         //console.warn(this.loginForm.controls['email'].value);
         this.authService.SignIn(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value);
         var user = this.firebase.auth.currentUser;
+        console.log(user.uid);
         this.userService.getUser(user.uid).subscribe(result =>{
             this.curUser = result.map(x =>{
               return {
                 access: x.payload.doc.data()['access']
               };
             })
-            //this.access = this.curUser['access'];
-            //console.log(this.curUser);
+            this.authService.changeAccess(this.curUser[0]['access']);
+            this.access = this.curUser[0]['access'];
+            console.log(this.access);
           });
-        //console.log((this.curUser[0]['access']));
-        this.authService.changeAccess(this.curUser[0]['access']);
+        //console.log(this.access);
+       // this.authService.currentAccess.subscribe(access => this.access = access)
         this.router.navigate(['/home']);
     }
 }

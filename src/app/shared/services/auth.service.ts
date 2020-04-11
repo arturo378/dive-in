@@ -22,15 +22,15 @@ import { Router, RouterLink } from "@angular/router";
         public ngZone: NgZone // NgZone service to remove outside scope warning
       ) {
 
-        /* Saving user data in localstorage when 
-        logged in and setting up null when logged out */
-        this.afAuth.authState.subscribe(user => {
-          if (user) {
+        // /* Saving user data in localstorage when 
+        // logged in and setting up null when logged out */
+        // this.afAuth.authState.subscribe(user => {
+        //   if (user) {
           
-          } else {
+        //   } else {
             
-          }
-        })
+        //   }
+        // })
 
       }
 

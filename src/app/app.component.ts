@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     this.user = this.firebase.auth.currentUser;
 
     if (this.user) {
-      
+      //this.auth.currentAccess.subscribe(access => this.access = access)
 
     } else {
        // No user is signed in.
